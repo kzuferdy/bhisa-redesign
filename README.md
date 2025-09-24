@@ -56,8 +56,6 @@ Form data penumpang memberikan feedback error secara langsung saat pengguna meng
 - Pengaman double-click pada tombol-tombol krusial untuk mencegah aksi ganda
 - Countdown timer di halaman reservasi dan pembayaran untuk menciptakan urgensi
 
-### Aksesibilitas (A11y)
-Pesan dinamis penting (seperti konfirmasi pembayaran) menggunakan `aria-live` agar dapat diumumkan oleh screen reader.
 
 ## Struktur Folder
 
