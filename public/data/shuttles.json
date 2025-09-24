@@ -1,0 +1,53 @@
+{
+  "schedules": [
+    {
+      "id": "JKT-BDG-BS-01",
+      "operator": "Blue Shuttle",
+      "origin": "Jakarta",
+      "destination": "Bandung",
+      "departures": ["08:00", "11:00", "14:00", "17:00", "20:00"],
+      "duration_minutes": 180,
+      "pickup_points": ["Terminal Lebak Bulus", "Plaza Semanggi"],
+      "dropoff_points": ["Pasteur", "Terminal Leuwi Panjang"],
+      "price": 120000,
+      "seats_available": 10
+    },
+    {
+      "id": "JKT-BDG-RT-01",
+      "operator": "Red Trans",
+      "origin": "Jakarta",
+      "destination": "Bandung",
+      "departures": ["09:00", "13:00", "19:00"],
+      "duration_minutes": 160,
+      "pickup_points": ["Bandara Soekarno Hatta", "Mall Kelapa Gading"],
+      "dropoff_points": ["Dago", "Cihampelas Walk"],
+      "price": 135000,
+      "seats_available": 5
+    },
+    {
+      "id": "BDG-JKT-BS-02",
+      "operator": "Blue Shuttle",
+      "origin": "Bandung",
+      "destination": "Jakarta",
+      "departures": ["07:30", "10:30", "15:30", "18:30"],
+      "duration_minutes": 180,
+      "pickup_points": ["Pasteur", "Terminal Leuwi Panjang"],
+      "dropoff_points": ["Terminal Lebak Bulus", "Plaza Semanggi"],
+      "price": 120000,
+      "seats_available": 8
+    },
+    {
+      "id": "BDG-SBY-TX-03",
+      "operator": "TravelX",
+      "origin": "Bandung",
+      "destination": "Surabaya",
+      "departures": ["09:00", "15:00"],
+      "duration_minutes": 600,
+      "pickup_points": ["Terminal Cicaheum"],
+      "dropoff_points": ["Terminal Bungurasih"],
+      "price": 250000,
+      "seats_available": 12
+    }
+  ]
+}
+
