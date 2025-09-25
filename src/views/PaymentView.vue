@@ -8,7 +8,6 @@
         </button>
       </div>
 
-      <!-- Tampilan SETELAH Pembayaran Berhasil -->
       <div v-if="isPaid && bookingCode" class="max-w-2xl mx-auto text-center bg-white p-8 rounded-lg shadow-lg">
         <h1 class="text-3xl font-bold text-green-600 mb-4">Pembayaran Berhasil!</h1>
         <p class="text-gray-600 mb-6">E-tiket Anda telah dikirim ke email. Simpan kode booking Anda.</p>
@@ -19,7 +18,6 @@
         <button @click="$router.push({ name: 'home' })" class="mt-8 w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700">Pesan Lagi</button>
       </div>
 
-      <!-- Tampilan SAAT Pembayaran -->
       <div v-else class="grid grid-cols-12 gap-6 lg:gap-8">
         <div class="col-span-12 lg:col-span-8">
           <h1 class="text-3xl font-bold mb-6">Pilih Metode Pembayaran</h1>
@@ -59,9 +57,6 @@ export default {
     ...mapGetters(useBookingStore, ['orderSummary', 'formattedPaymentCountdown']),
   },
   methods: {
-    // =============================================
-    // INI DIA PERBAIKANNYA: SAMBUNG SEMUA KABEL!
-    // =============================================
     ...mapActions(useBookingStore, [
       'confirmPayment',
       'startPaymentCountdown',
@@ -69,7 +64,6 @@ export default {
     ]),
 
     handleConfirmPayment() {
-      // Panggil aksi confirmPayment yang sudah kita mapping
       this.confirmPayment();
     }
   },
@@ -80,12 +74,10 @@ export default {
       return;
     }
     if(!store.isPaid) {
-      // Sekarang, this.startPaymentCountdown sudah dikenali sebagai fungsi
       this.startPaymentCountdown();
     }
   },
   unmounted() {
-    // Ini juga sekarang sudah dikenali
     this.stopPaymentCountdown();
   }
 }
