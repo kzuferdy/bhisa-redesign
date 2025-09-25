@@ -13,7 +13,6 @@ const router = createRouter({
     {
       path: '/pencarian',
       name: 'search',
-      // Lazy load komponen halaman agar initial load lebih cepat
       component: () => import('../views/SearchView.vue'),
       meta: { title: 'Cari Jadwal Shuttle' },
     },
@@ -30,13 +29,11 @@ const router = createRouter({
       meta: { title: 'Pembayaran' },
     },
   ],
-  // Selalu scroll ke atas setiap pindah halaman
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 }
   },
 })
 
-// Menambahkan judul halaman dinamis dari meta title
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title || 'Bhisa Shuttle'
   next()
