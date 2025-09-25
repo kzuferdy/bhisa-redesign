@@ -12,8 +12,6 @@ Tugas utama adalah meredesain alur **Beranda → Pencarian → Reservasi → Pem
 
 ## Tampilan Aplikasi
 
-> Disarankan untuk menambahkan screenshot aplikasi Anda di sini. Ini sangat membantu untuk memberikan gambaran visual.
-
 <img width="1583" height="729" alt="image" src="https://github.com/user-attachments/assets/9cc1a9fe-9756-4723-9d1e-63592a040d7a" />
 
 
