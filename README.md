@@ -4,7 +4,7 @@ Selamat datang di repositori proyek redesain frontend untuk Bhisa Shuttle. Proye
 
 ## Tautan Demo Langsung
 
-[Demo di Vercel](https://your-demo-link.vercel.app)
+[Demo di Vercel](https://bhisa-redesign.vercel.app/)
 
 ## Ringkasan Tugas
 
