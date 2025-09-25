@@ -1,9 +1,6 @@
 <template>
   <main class="bg-gray-100 min-h-screen">
     <div class="container mx-auto py-8">
-      <!-- ============================================= -->
-      <!-- BAGIAN ATAS HALAMAN (TOMBOL KEMBALI & JUDUL) -->
-      <!-- ============================================= -->
       <div class="px-4 sm:px-0 mb-4">
         <button @click="$router.back()" class="flex items-center gap-2 text-gray-600 hover:text-black font-semibold">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -11,9 +8,6 @@
         </button>
       </div>
 
-      <!-- ============================================= -->
-      <!-- TOMBOL AKSI UNTUK MOBILE (DIRAPIKAN) -->
-      <!-- ============================================= -->
       <div class="lg:hidden flex gap-4 mb-6 px-4 sm:px-0">
         <button @click="openFilterDrawer" class="flex-1 flex justify-center items-center gap-2 bg-white text-gray-800 font-bold py-3 px-4 rounded-lg shadow-md">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
@@ -25,11 +19,7 @@
         </button>
       </div>
 
-      <!-- ============================================= -->
-      <!-- KONTEN UTAMA (GRID) -->
-      <!-- ============================================= -->
       <div class="grid grid-cols-12 gap-6">
-        <!-- Kolom Sidebar (Desktop) -->
         <aside class="hidden lg:block col-span-3">
           <div class="p-4 bg-white rounded-lg shadow-md mb-6">
             <h2 class="text-xl font-bold mb-4">Ubah Pencarian</h2>
@@ -39,7 +29,6 @@
           <FilterSidebar :operators="availableOperators" @update-filters="handleUpdateFilters" />
         </aside>
 
-        <!-- Kolom Hasil Pencarian -->
         <section class="col-span-12 lg:col-span-9">
            <div v-if="isLoading" class="space-y-4">
             <div v-for="n in 3" :key="n" class="w-full h-36 bg-white rounded-lg shadow-md animate-pulse"></div>
@@ -71,7 +60,6 @@
         </section>
       </div>
 
-      <!-- Drawer Mobile -->
       <FilterSidebar :as-drawer="true" :is-open="isFilterDrawerOpen" :operators="availableOperators" @update-filters="handleUpdateFilters" @close="closeFilterDrawer"/>
     </div>
   </main>
@@ -96,20 +84,17 @@ export default {
     ...mapGetters(useBookingStore, ['availableOperators', 'filteredShuttleResults'])
   },
   methods: {
-    // =============================================
-    // INI DIA PERBAIKANNYA: TAMBAHKAN 'updateSort'
-    // =============================================
     ...mapActions(useBookingStore, [
       'fetchShuttles',
       'selectScheduleAndProceed',
       'updateFilters',
       'openFilterDrawer',
       'closeFilterDrawer',
-      'updateSort' // <-- Kabel yang putus udah disambung!
+      'updateSort'
     ]),
 
     loadInitialData() {
-      this.selectedSort = 'recommended'; // Reset sort setiap load
+      this.selectedSort = 'recommended';
       const { dari, ke, tgl, kursi } = this.$route.query;
       if (dari && ke && tgl) { this.fetchShuttles({ dari, ke, tgl, kursi: parseInt(kursi) || 1 }); }
       else { this.$router.push({ name: 'home' }); }
