@@ -1,7 +1,6 @@
 <template>
   <div class="bg-white p-6 rounded-lg shadow-md">
     <div class="space-y-4">
-      <!-- Kita loop daftar metode pembayaran -->
       <div v-for="method in paymentMethods" :key="method.id">
         <button
           @click="activeMethod = method.id"
@@ -9,11 +8,9 @@
           :class="{ 'bg-blue-50 border-blue-500': activeMethod === method.id }"
         >
           <span class="font-bold">{{ method.name }}</span>
-          <!-- Ikon panah -->
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform" :class="{ 'rotate-180': activeMethod === method.id }"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
 
-        <!-- Detail Pembayaran (muncul jika aktif) -->
         <div v-if="activeMethod === method.id" class="p-4 border border-t-0 rounded-b-lg">
           <p class="text-sm text-gray-500">Nomor Virtual Account</p>
           <div class="flex items-center justify-between my-2">
@@ -23,7 +20,6 @@
             </button>
           </div>
           <hr class="my-4">
-          <!-- Accordion Tutorial -->
           <div>
             <button @click="toggleAccordion('how_to_pay')" class="w-full flex justify-between items-center text-left font-semibold">
               <span>Cara Pembayaran</span>
@@ -50,12 +46,11 @@ export default {
   name: 'PaymentOptions',
   data() {
     return {
-      activeMethod: 'bca_va', // -> Default yg aktif
+      activeMethod: 'bca_va',
       openAccordion: null,
       copyStatus: {},
       paymentMethods: [
         { id: 'bca_va', name: 'Virtual Account BCA', va_number: '1234 5678 9101 1121' },
-        // Nanti bisa tambah metode lain di sini
       ]
     }
   },
@@ -64,7 +59,6 @@ export default {
       this.openAccordion = this.openAccordion === id ? null : id;
     },
     copyToClipboard(text, id) {
-      // Trik untuk copy ke clipboard
       const textarea = document.createElement('textarea');
       textarea.value = text;
       document.body.appendChild(textarea);
@@ -72,11 +66,10 @@ export default {
       document.execCommand('copy');
       document.body.removeChild(textarea);
 
-      // Kasih feedback visual ke user
       this.copyStatus[id] = true;
       setTimeout(() => {
         this.copyStatus[id] = false;
-      }, 2000); // -> Reset setelah 2 detik
+      }, 2000);
     }
   }
 }

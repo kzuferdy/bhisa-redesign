@@ -1,7 +1,5 @@
 <template>
-  <!-- MODE 1: Jika komponen ini dipanggil sebagai DRAWER (untuk Mobile) -->
   <div v-if="asDrawer">
-    <!-- Kondisi ini penting untuk transisi keluar-masuk -->
     <transition
       enter-active-class="transition-opacity ease-in-out duration-300"
       enter-from-class="opacity-0"
@@ -10,7 +8,6 @@
       leave-from-class="opacity-100"
       leave-to-class="opacity-0"
     >
-      <!-- Latar Belakang Gelap (Overlay) -->
       <div v-if="isOpen" @click="close" class="fixed inset-0 bg-black/60 z-40"></div>
     </transition>
     <transition
@@ -21,7 +18,6 @@
       leave-from-class="translate-x-0"
       leave-to-class="-translate-x-full"
     >
-      <!-- Panel Drawer -->
       <div v-if="isOpen" class="fixed top-0 left-0 h-full w-4/5 max-w-sm bg-white z-50">
         <div class="flex justify-between items-center p-4 border-b">
           <h3 class="text-lg font-bold">Filter</h3>
@@ -32,7 +28,6 @@
             </div>
           </button>
         </div>
-        <!-- Konten Filter (versi mobile) -->
         <div class="p-4">
           <h4 class="font-semibold mb-2">Operator</h4>
           <div class="space-y-2">
@@ -46,10 +41,8 @@
     </transition>
   </div>
 
-  <!-- MODE 2: Jika komponen ini dipanggil sebagai SIDEBAR BIASA (untuk Desktop) -->
   <div v-else class="p-4 bg-white rounded-lg shadow-md sticky top-8">
     <h3 class="text-lg font-bold border-b pb-2 mb-4">Filter</h3>
-    <!-- Konten Filter (versi desktop) -->
     <div>
       <h4 class="font-semibold mb-2">Operator</h4>
       <div class="space-y-2">
