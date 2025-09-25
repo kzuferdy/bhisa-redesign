@@ -95,7 +95,7 @@ export default {
   components: { SeatMap },
   setup() {
     const store = useBookingStore();
-    return { store }; // Expose store ke template
+    return { store };
   },
   computed: {
     ...mapState(useBookingStore, ['selectedSeats', 'searchParams', 'passengerData', 'couponCode', 'couponDiscount', 'couponError', 'termsAgreed']),
