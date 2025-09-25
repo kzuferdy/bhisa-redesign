@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-// Helper untuk format harga
 const formatCurrency = (value) => {
   if (typeof value !== 'number') return ''
   return new Intl.NumberFormat('id-ID', {
@@ -77,21 +76,18 @@ export const useBookingStore = defineStore('booking', {
     availableOperators(state) {
       if (!state.shuttleResults) return []
       const operators = state.shuttleResults.map((shuttle) => shuttle.operator)
-      return [...new Set(operators)] // -> Menghasilkan array unik, misal: ['Blue Shuttle', 'Red Trans']
+      return [...new Set(operators)]
     },
 
-    // GETTER PALING PENTING: Menampilkan hasil yang sudah difilter
     filteredShuttleResults(state) {
       let results = [...state.shuttleResults]
 
-      // 1. Logika Filter (tetap sama)
       if (state.activeFilters.operators.length > 0) {
         results = results.filter((shuttle) =>
           state.activeFilters.operators.includes(shuttle.operator),
         )
       }
 
-      // 2. LOGIKA SORTING BARU!
       switch (state.activeSort) {
         case 'harga-termurah':
           results.sort((a, b) => a.price - b.price)
@@ -100,11 +96,9 @@ export const useBookingStore = defineStore('booking', {
           results.sort((a, b) => b.price - a.price)
           break
         case 'jam-terawal':
-          // Kita ambil jam pertama dari array departures untuk perbandingan
           results.sort((a, b) => a.departures[0].localeCompare(b.departures[0]))
           break
         default:
-          // Biarkan urutan asli jika 'recommended' atau lainnya
           break
       }
 
@@ -139,7 +133,7 @@ export const useBookingStore = defineStore('booking', {
     },
     startPaymentCountdown() {
       if (this.paymentTimerId) clearInterval(this.paymentTimerId)
-      this.paymentCountdown = 300 // Reset ke 5 menit
+      this.paymentCountdown = 300
       this.paymentTimerId = setInterval(() => {
         if (this.paymentCountdown > 0) {
           this.paymentCountdown--
@@ -183,17 +177,12 @@ export const useBookingStore = defineStore('booking', {
       this.passengerData[seatId] = { ...this.passengerData[seatId], ...data }
     },
     applyCoupon() {
-      // this.couponError = null; // -> Baris ini bisa dihapus
       this.couponDiscount = 0
       if (this.couponCode.toUpperCase() === 'HEMAT30') {
         const subtotal = this.selectedSchedule.price * this.selectedSeats.length
         this.couponDiscount = subtotal * 0.3
-        // Kasih feedback sukses!
         this.addToast({ message: 'Kupon berhasil digunakan!', type: 'success' })
       } else if (this.couponCode.trim() !== '') {
-        // GANTI BARIS INI:
-        // this.couponError = 'Kode kupon tidak valid.';
-        // MENJADI INI:
         this.addToast({ message: 'Kode kupon tidak valid.', type: 'error' })
       }
     },
@@ -255,10 +244,8 @@ export const useBookingStore = defineStore('booking', {
     },
     addToast({ message, type = 'info', duration = 3000 }) {
       const id = Date.now()
-      // Tambahkan toast baru ke awal array biar muncul di atas
       this.toasts.unshift({ id, message, type })
 
-      // Set timer untuk hapus toast otomatis
       setTimeout(() => {
         this.removeToast(id)
       }, duration)
