@@ -1,4 +1,4 @@
-# Bhisa Shuttle - Redesain Frontend (Submission Tugas)
+# Bhisa Shuttle - Redesain Frontend
 
 Selamat datang di repositori proyek redesain frontend untuk Bhisa Shuttle. Proyek ini adalah sebuah Single Page Application (SPA) yang dibangun untuk memenuhi tugas seleksi, dengan fokus pada alur pemesanan tiket dari Beranda hingga Pembayaran.
 
