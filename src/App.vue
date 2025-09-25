@@ -2,7 +2,6 @@
   <div class="flex flex-col min-h-screen">
     <Navbar />
 
-    <!-- RouterView akan mengisi sisa ruang yang tersedia -->
     <main class="flex-grow">
       <RouterView />
     </main>
@@ -14,7 +13,7 @@
 
 <script>
 import { RouterView } from 'vue-router'
-import Navbar from '@/components/global/Navbar.vue' // -> Gunakan path alias yg kokoh
+import Navbar from '@/components/global/Navbar.vue'
 import Footer from '@/components/global/Footer.vue'
 import ToastWrapper from '@/components/global/ToastWrapper.vue'
 
